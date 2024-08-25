@@ -3,21 +3,26 @@ session_start();
 
 include "koneksi.php"; //ambil koneksi ke db
 
-$username = $_POST['username'];
-$password     = $_POST['password'];
-$pass = stripslashes($password);
-$pass     = mysqli_real_escape_string($connect, $pass); //mencegah mysql injection
-$pass = md5($pass); //enkripsi paswot
+// Sanitasi input untuk mencegah XSS
+$username = htmlspecialchars($_POST['username']);
+$password = htmlspecialchars($_POST['password']);
+$pass = md5($password); //enkripsi paswot
 
-  
-$login = mysqli_query($connect, "SELECT * FROM tb_admin WHERE username = '$username' AND password='$pass'");
-$row=mysqli_fetch_array($login);
+// Mencegah SQL Injection dengan prepared statement
+$stmt = $connect->prepare("SELECT * FROM tb_admin WHERE username = ? AND password = ?");
+$stmt->bind_param("ss", $username, $pass);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
 
-  if ($row['username'] == $username AND $row['password'] == $pass){
-   session_start(); 
-    $_SESSION['admin'] = $row['username'];//menyimpan session username
-    header('location:pakar-home.php');}
+if ($row['username'] == $username AND $row['password'] == $pass){
+    session_start(); 
+    $_SESSION['admin'] = $row['username']; //menyimpan session username
+    header('location:pakar-home.php');
+} else { //kalo levelnya bukan user ato admin maka masuk sini
+    echo "<script>alert('Maaf, Pastikan Username dan Password anda benar!'); window.location=('loginpakar.php');</script>";
+}
 
-  else{ //kalo levelnya bukan user ato admin maka masuk sini
-    echo "<script>alert('Maaf, Pastikan Username dan Password anda benar!'); window.location=('loginpakar.php');</script>";}
+$stmt->close();
+$connect->close();
 ?>

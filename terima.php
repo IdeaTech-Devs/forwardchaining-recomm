@@ -6,5 +6,3 @@
     header("location:pakar-masukan.php");
   }
 
-
- ?>
