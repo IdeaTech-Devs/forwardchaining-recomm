@@ -5,6 +5,4 @@ if(!isset($_SESSION["admin"])){
 }
 
 unset($_SESSION['admin']);
-header('location:loginpakar.php'); //direct ke index.php
-
-?>
+header('location:index.php'); //direct ke index.php

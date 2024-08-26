@@ -7,7 +7,7 @@
     <meta name="author" content="mr k">
     <link rel="icon" href="image/icon.png">
 
-    <title>Sistem Minat Program Pendidikan</title>
+    <title>Sistem Minat Program Studi</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
