@@ -175,3 +175,6 @@ $dbname = 'sispaktesttest';
    - Buka browser dan akses `http://localhost/nama_folder_web_anda`.
 
 Dengan mengikuti langkah-langkah di atas, Anda dapat menginstal dan menjalankan web Sistem Pakar Pemilihan Prodi menggunakan XAMPP atau Laragon.
+
+
+<!-- CARA TEST AKURASI -->

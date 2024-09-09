@@ -2,8 +2,16 @@
 include ('koneksi.php');
 session_start();
 
-// Mulai dari pertanyaan pertama jika tidak ada kode yang diterima
-$kode = isset($_GET['kode']) ? $_GET['kode'] : 'm1';
+// Mulai dari pertanyaan acak hanya jika tidak ada kode yang diterima
+if (!isset($_GET['kode'])) {
+    $sql = "SELECT kode_pertanyaan FROM tb_pertanyaan ORDER BY RAND() LIMIT 1";
+    $data = mysqli_query($connect, $sql);
+    $row = mysqli_fetch_assoc($data);
+    $kode = $row['kode_pertanyaan'];
+    $_SESSION['first_question'] = $kode; // Simpan pertanyaan pertama
+} else {
+    $kode = $_GET['kode'];
+}
 
 // Ambil pertanyaan dari database
 $sql = "SELECT * from tb_pertanyaan WHERE kode_pertanyaan='$kode'";

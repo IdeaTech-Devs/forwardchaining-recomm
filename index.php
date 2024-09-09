@@ -14,6 +14,12 @@
 
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
+
+    <!-- Google Fonts: Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
 	<?php
@@ -30,8 +36,8 @@
             <img class="first-slide" src="image/bg-1.gif" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-center">
-                <h1>PEMILIHAN JURUSAN</h1>
-                <p>Pemilihan program jurusan berdasarkan jurusan yang diambil sebelumnya</p>
+                <h1>PEMILIHAN PROGRAM STUDI</h1>
+                <p>Pemilihan program Studi berdasarkan minat dan karakteristik diri sendiri</p>
                 <p><button type="button" class="btn btn-lg btn-info" data-target="#exampleModal" data-toggle="modal" data-whatever="@getbootstrap">Mulai</button></p>
               </div>
             </div>
@@ -47,15 +53,15 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="simpan-session.php" method="post" enctype="multipart/form-data" role="form">
+            <form id="userForm" action="simpan-session.php" method="post" enctype="multipart/form-data" role="form">
             <div class="modal-body">
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Nama :</label>
-                  <input type="text" name="nama" class="form-control" id="input-ame" placeholder="isikan nama anda" required autofocus >
+                  <input type="text" name="nama" class="form-control" id="input-name" placeholder="isikan nama anda" required autofocus >
                 </div>
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Umur :</label>
-                  <input type="number" name="umur" class="form-control col-sm-8" placeholder="isikan umur anda" required >
+                  <input type="number" name="umur" class="form-control col-sm-8" id="input-umur" placeholder="isikan umur anda" required >
                 </div>
                 </div>
                 <div class="modal-footer">
@@ -80,4 +86,26 @@
     <!-- Placed at the end of the document so the pages load faster -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+	<!-- SweetAlert JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script>
+		document.getElementById('userForm').addEventListener('submit', function(event) {
+			var umur = document.getElementById('input-umur').value;
+			if (umur < 17) {
+				event.preventDefault();
+				Swal.fire({
+					icon: 'error',
+					title: 'Umur tidak mencukupi',
+					text: 'Umur harus lebih dari 17 tahun'
+				});
+			} else if (umur > 23) {
+				event.preventDefault();
+				Swal.fire({
+					icon: 'error',
+					title: 'Umur melewati batas',
+					text: 'Umur harus kurang dari 23 tahun'
+				});
+			}
+		});
+	</script>
 </html>

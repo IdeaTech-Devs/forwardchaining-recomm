@@ -13,6 +13,12 @@
                   Masukan Pengguna
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pakar-pertanyaan.php">
+                  <span data-feather="file-text"></span>
+                  Lihat Pertanyaan
+                </a>
+              </li>
             </ul>
           </div>
         </nav>

@@ -2,19 +2,33 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   padding-bottom: 3rem;
   color: #5a5a5a;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
 }
 
+main {
+  height: 100%;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
-
+  
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
+  width: 100%; /* Tambahkan ini */
+  height: 100vh; /* Tambahkan ini */
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   bottom: 3rem;
@@ -23,15 +37,32 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-  height: 32rem;
+  height: 100vh; /* Ubah dari 32rem ke 100vh */
   background-color: #777;
 }
+
 .carousel-item > img {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%; /* Tambahkan ini */
+  height: 100%; /* Tambahkan ini */
+  object-fit: cover; /* Tambahkan ini */
 }
 
+/* Modern and Futuristic Styles */
+.carousel-caption h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
@@ -69,4 +100,52 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+
+/* Modern and Futuristic Styles */
+.btn-info {
+  background-color: #17a2b8;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+}
+
+.modal-content {
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  border-bottom: none;
+  background-color: #17a2b8;
+  color: #fff;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: #17a2b8;
+  box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
 }
